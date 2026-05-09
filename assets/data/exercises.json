@@ -1,0 +1,262 @@
+[
+  {
+    "id": "e1",
+    "muscleGroupId": "arms",
+    "title": "Barbell Bicep Curl",
+    "gifUrl": "assets/images/training_help/arms/barbell_bicep_curl.gif",
+    "description": "The king of bicep exercises for building mass.",
+    "techniqueSteps": [
+      "Stand with feet shoulder-width apart.",
+      "Hold the barbell with an underhand grip.",
+      "Curl the bar toward your shoulders, keeping elbows tucked.",
+      "Slowly lower back to the starting position."
+    ]
+  },
+  {
+    "id": "e5",
+    "muscleGroupId": "arms",
+    "title": "Skull Crushers",
+    "gifUrl": "assets/images/training_help/arms/skull_crushers.gif",
+    "description": "Isolated tricep movement for long-head development.",
+    "techniqueSteps": [
+      "Lie on a bench holding an EZ-bar above your chest.",
+      "Lower the bar toward your forehead by bending only elbows.",
+      "Extend arms back to the starting position.",
+      "Keep your upper arms stationary."
+    ]
+  },
+  {
+    "id": "e9",
+    "muscleGroupId": "arms",
+    "title": "Dumbbell Hammer Curls",
+    "gifUrl": "assets/images/training_help/arms/dumbbell_hammer_curls.gif",
+    "description": "Targets the brachialis and forearm.",
+    "techniqueSteps": [
+      "Hold dumbbells with palms facing each other.",
+      "Curl the weight up while maintaining a neutral grip.",
+      "Squeeze at the top.",
+      "Lower slowly."
+    ]
+  },
+  {
+    "id": "e13",
+    "muscleGroupId": "arms",
+    "title": "Dips",
+    "gifUrl": "assets/images/training_help/arms/dips.gif",
+    "description": "Effective for triceps and lower chest.",
+    "techniqueSteps": [
+      "Lower your body until elbows are at 90 degrees.",
+      "Push back up using triceps.",
+      "Avoid leaning too far forward to focus on triceps.",
+      "Keep shoulders stable."
+    ]
+  },
+  {
+    "id": "e16",
+    "muscleGroupId": "arms",
+    "title": "Preacher Curls",
+    "gifUrl": "assets/images/training_help/arms/preacher_curls.gif",
+    "description": "Isolates the biceps by preventing momentum.",
+    "techniqueSteps": [
+      "Sit on a preacher bench and rest your arms on the pad.",
+      "Hold an EZ-bar or dumbbells with an underhand grip.",
+      "Slowly lower the weight until arms are fully extended.",
+      "Curl the weight back up, squeezing the biceps at the top."
+    ]
+  },
+  {
+    "id": "e2",
+    "muscleGroupId": "back",
+    "title": "Wide-Grip Pull-Ups",
+    "gifUrl": "assets/images/training_help/back/pull_ups_wide.gif",
+    "description": "Essential compound move for a V-taper back.",
+    "techniqueSteps": [
+      "Grip the bar wider than shoulder-width.",
+      "Pull your chest toward the bar by driving elbows down.",
+      "Pause at the top, then slowly descend.",
+      "Avoid using momentum or swinging."
+    ]
+  },
+  {
+    "id": "e7",
+    "muscleGroupId": "back",
+    "title": "Bent Over Barbell Row",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKMGpxx6rSPvN96/giphy.gif",
+    "description": "Builds back thickness and strength.",
+    "techniqueSteps": [
+      "Hinge at the hips with a flat back.",
+      "Pull the bar to your lower ribs.",
+      "Squeeze your shoulder blades together.",
+      "Lower the bar under control."
+    ]
+  },
+  {
+    "id": "e12",
+    "muscleGroupId": "back",
+    "title": "Lat Pulldowns",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKMGpxx6rSPvN96/giphy.gif",
+    "description": "Machine alternative to pull-ups.",
+    "techniqueSteps": [
+      "Pull the bar down to your upper chest.",
+      "Focus on driving your elbows back.",
+      "Keep your chest up and back slightly arched.",
+      "Return the bar slowly."
+    ]
+  },
+  {
+    "id": "e17",
+    "muscleGroupId": "back",
+    "title": "Seated Cable Row",
+    "gifUrl": "assets/images/training_help/back/seated_row.gif",
+    "description": "Great for middle back development.",
+    "techniqueSteps": [
+      "Sit at the machine with feet on the platforms and knees slightly bent.",
+      "Grip the handle and pull it towards your abdomen.",
+      "Squeeze your shoulder blades together at the peak.",
+      "Slowly extend your arms back to the starting position."
+    ]
+  },
+  {
+    "id": "e3",
+    "muscleGroupId": "abs",
+    "title": "Hanging Knee Raises",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKVUn7iM8FMEU24/giphy.gif",
+    "description": "Highly effective for targeting the lower abs.",
+    "techniqueSteps": [
+      "Hang from a pull-up bar with a straight back.",
+      "Raise your knees toward your chest using your core.",
+      "Slowly lower your legs without swinging.",
+      "Keep your shoulders engaged throughout."
+    ]
+  },
+  {
+    "id": "e6",
+    "muscleGroupId": "abs",
+    "title": "Plank with Shoulder Taps",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKVUn7iM8FMEU24/giphy.gif",
+    "description": "Builds anti-rotational core strength.",
+    "techniqueSteps": [
+      "Start in a high plank position.",
+      "Tap your left shoulder with your right hand.",
+      "Keep your hips perfectly still.",
+      "Repeat on the other side."
+    ]
+  },
+  {
+    "id": "e10",
+    "muscleGroupId": "abs",
+    "title": "Russian Twists",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKVUn7iM8FMEU24/giphy.gif",
+    "description": "Focuses on the obliques and rotation.",
+    "techniqueSteps": [
+      "Sit with knees bent, feet slightly off the ground.",
+      "Twist your torso to the right, then to the left.",
+      "Move with control, not speed.",
+      "Keep your core tight."
+    ]
+  },
+  {
+    "id": "e15",
+    "muscleGroupId": "abs",
+    "title": "Bicycle Crunches",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKVUn7iM8FMEU24/giphy.gif",
+    "description": "The all-in-one abdominal movement.",
+    "techniqueSteps": [
+      "Bring opposite elbow to opposite knee.",
+      "Straighten the other leg out.",
+      "Rotate through your core, not just arms.",
+      "Keep your neck relaxed."
+    ]
+  },
+  {
+    "id": "e18",
+    "muscleGroupId": "abs",
+    "title": "Leg Raises",
+    "gifUrl": "assets/images/training_help/abs/leg_raises.gif",
+    "description": "Targets the lower abs and hip flexors.",
+    "techniqueSteps": [
+      "Lie on your back with hands under your glutes or by your sides.",
+      "Keep your legs straight and lift them until they are vertical.",
+      "Slowly lower your legs back down without touching the floor.",
+      "Keep your lower back pressed against the ground."
+    ]
+  },
+  {
+    "id": "e4",
+    "muscleGroupId": "legs",
+    "title": "Barbell Back Squat",
+    "gifUrl": "assets/images/training_help/legs/barbell_squats.gif",
+    "description": "The fundamental lower body exercise.",
+    "techniqueSteps": [
+      "Rest the bar on your upper traps.",
+      "Squat down by pushing hips back and knees out.",
+      "Keep your back straight and chest up.",
+      "Drive back up through your heels."
+    ]
+  },
+  {
+    "id": "e8",
+    "muscleGroupId": "legs",
+    "title": "Romanian Deadlift",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKv609M92M1Q6Q0/giphy.gif",
+    "description": "Targets the hamstrings and glutes.",
+    "techniqueSteps": [
+      "Hold the bar at hip level.",
+      "Lower the bar by pushing hips back with a slight knee bend.",
+      "Keep the bar close to your shins.",
+      "Return to start by engaging hamstrings."
+    ]
+  },
+  {
+    "id": "e11",
+    "muscleGroupId": "legs",
+    "title": "Lunges",
+    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKv609M92M1Q6Q0/giphy.gif",
+    "description": "Great for balance and leg isolation.",
+    "techniqueSteps": [
+      "Step forward with one leg.",
+      "Lower hips until both knees are bent at 90 degrees.",
+      "Push back up to the start.",
+      "Keep your torso upright."
+    ]
+  },
+  {
+    "id": "e14",
+    "muscleGroupId": "legs",
+    "title": "Leg Press",
+    "gifUrl": "assets/images/training_help/legs/leg_press.gif",
+    "description": "Machine-based leg builder.",
+    "techniqueSteps": [
+      "Lower the platform until knees are near chest.",
+      "Do not lock your knees at the top.",
+      "Keep feet flat on the platform.",
+      "Engage your quads."
+    ]
+  },
+  {
+    "id": "e19",
+    "muscleGroupId": "legs",
+    "title": "Leg Extensions",
+    "gifUrl": "assets/images/training_help/legs/leg_extensions.gif",
+    "description": "Isolation exercise for the quadriceps.",
+    "techniqueSteps": [
+      "Sit on the machine with your back against the pad.",
+      "Place your ankles under the roller pads.",
+      "Extend your legs until they are straight.",
+      "Slowly lower the weight back to the starting position."
+    ]
+  },
+  {
+    "id": "e20",
+    "muscleGroupId": "legs",
+    "title": "Hamstring Curls",
+    "gifUrl": "assets/images/training_help/legs/hamstring_curls.gif",
+    "description": "Isolation exercise for the back of the legs.",
+    "techniqueSteps": [
+      "Lie face down on the machine or sit (depending on the type).",
+      "Place the roller pad against your lower calves.",
+      "Curl your legs up as far as possible.",
+      "Slowly return to the starting position."
+    ]
+  }
+]
