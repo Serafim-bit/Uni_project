@@ -3,7 +3,7 @@
     "id": "e1",
     "muscleGroupId": "arms",
     "title": "Barbell Bicep Curl",
-    "gifUrl": "assets/images/training_help/arms/barbell_bicep_curl.gif",
+    "gifUrl": "assets/images/training_help/arms/barbell_bicep_curls.gif",
     "description": "The king of bicep exercises for building mass.",
     "techniqueSteps": [
       "Stand with feet shoulder-width apart.",
@@ -16,7 +16,7 @@
     "id": "e5",
     "muscleGroupId": "arms",
     "title": "Skull Crushers",
-    "gifUrl": "assets/images/training_help/arms/skull_crushers.gif",
+    "gifUrl": "assets/images/training_help/arms/skull_crusher.gif",
     "description": "Isolated tricep movement for long-head development.",
     "techniqueSteps": [
       "Lie on a bench holding an EZ-bar above your chest.",
@@ -29,7 +29,7 @@
     "id": "e9",
     "muscleGroupId": "arms",
     "title": "Dumbbell Hammer Curls",
-    "gifUrl": "assets/images/training_help/arms/dumbbell_hammer_curls.gif",
+    "gifUrl": "assets/images/training_help/arms/dumbell_hammer_curls.gif",
     "description": "Targets the brachialis and forearm.",
     "techniqueSteps": [
       "Hold dumbbells with palms facing each other.",
@@ -81,7 +81,7 @@
     "id": "e7",
     "muscleGroupId": "back",
     "title": "Bent Over Barbell Row",
-    "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4ZzR6bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3/3o7TKMGpxx6rSPvN96/giphy.gif",
+    "gifUrl": "assets/images/training_help/back/bent_over_barbell_row.gif",
     "description": "Builds back thickness and strength.",
     "techniqueSteps": [
       "Hinge at the hips with a flat back.",

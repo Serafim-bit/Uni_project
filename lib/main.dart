@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni_project/app_theme.dart';
 import 'package:uni_project/start/start_screen.dart';
 
 void main() {
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: StartScreen()
+      debugShowCheckedModeBanner: false,
+      title: 'Fit Diary',
+      theme: AppTheme.light,
+      home: const StartScreen(),
     );
   }
 }
-
-

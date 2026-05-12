@@ -3,74 +3,98 @@ import 'package:flutter/material.dart';
 class CardForStart extends StatelessWidget {
   const CardForStart({
     super.key,
-    required this.text,
+    required this.title,
+    required this.subtitle,
     required this.imagePath,
-    required this.onSelectCategory
+    required this.icon,
+    required this.onSelectCategory,
   });
 
-  final String text;
+  final String title;
+  final String subtitle;
   final String imagePath;
-  final void Function() onSelectCategory; 
+  final IconData icon;
+  final void Function() onSelectCategory;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 6,
-      margin: const EdgeInsets.all(8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      elevation: 0,
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
-        splashColor: Colors.white24,
-
-        onTap: () {
-          onSelectCategory();
-        },
-
+        onTap: onSelectCategory,
         child: Stack(
           fit: StackFit.expand,
           children: [
-
-            /// IMAGE
-            Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-            ),
-
-            /// GRADIENT OVERLAY
+            Image.asset(imagePath, fit: BoxFit.cover),
             Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    Colors.black54,
-                  ],
+                  colors: [Color(0x22000000), Color(0xCC000000)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
               ),
             ),
-
-            /// TEXT
             Positioned(
               left: 16,
               right: 16,
               bottom: 16,
-              child: Text(
-                text,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    Shadow(
-                      blurRadius: 6,
-                      color: Colors.black,
-                      offset: Offset(0, 2),
-                    )
-                  ],
-                ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.18),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.24),
+                      ),
+                    ),
+                    child: Icon(icon, color: Colors.white),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 21,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          subtitle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 0.86),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              right: 14,
+              top: 14,
+              child: Icon(
+                Icons.arrow_forward,
+                color: Colors.white.withValues(alpha: 0.88),
+                size: 22,
               ),
             ),
           ],

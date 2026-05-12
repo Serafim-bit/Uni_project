@@ -18,7 +18,9 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
   void initState() {
     super.initState();
     _titleController = TextEditingController(text: widget.task?.title ?? '');
-    _descriptionController = TextEditingController(text: widget.task?.description ?? '');
+    _descriptionController = TextEditingController(
+      text: widget.task?.description ?? '',
+    );
   }
 
   @override
@@ -32,11 +34,15 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
     final title = _titleController.text.trim();
     final description = _descriptionController.text.trim();
 
-    if(title.isEmpty && description.isEmpty) {
-      if(widget.task?.id != null) await DatabaseService.instance.deleteTask(widget.task!.id!);
+    if (title.isEmpty && description.isEmpty) {
+      if (widget.task?.id != null) {
+        await DatabaseService.instance.deleteTask(widget.task!.id!);
+      }
     } else {
-      if(widget.task == null) {
-        await DatabaseService.instance.insertTask(Task(title: title, description: description));
+      if (widget.task == null) {
+        await DatabaseService.instance.insertTask(
+          Task(title: title, description: description),
+        );
       } else {
         widget.task!
           ..title = title
@@ -45,16 +51,20 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
       }
     }
 
+    if (!mounted) return;
     Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.task == null ? 'Add Task' : 'Edit Task')),
+      appBar: AppBar(
+        title: Text(widget.task == null ? 'Add Note' : 'Edit Note'),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
               controller: _titleController,
@@ -63,14 +73,11 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
             const SizedBox(height: 16),
             TextField(
               controller: _descriptionController,
-              decoration: const InputDecoration(labelText: 'Task'),
+              decoration: const InputDecoration(labelText: 'Note'),
               maxLines: null,
             ),
             const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: _saveTask,
-              child: const Text('Save'),
-            )
+            ElevatedButton(onPressed: _saveTask, child: const Text('Save')),
           ],
         ),
       ),

@@ -33,6 +33,9 @@ dependencies:
 
   sqflite: ^2.3.0
   path: ^1.8.0
+  transparent_image: ^2.0.1
+  image_picker: ^1.0.7
+  intl: ^0.19.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -41,9 +44,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  transparent_image: ^2.0.1
-  image_picker: ^1.0.7
-  intl: ^0.19.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -69,6 +69,7 @@ flutter:
     - assets/data/exercises.json
     - assets/images/training_help/arms/
     - assets/images/training_help/back/
+    - assets/images/training_help/abs/
     - assets/images/training_help/legs/
     - assets/images/training_help/core/
 

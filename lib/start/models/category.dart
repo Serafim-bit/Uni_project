@@ -1,34 +1,48 @@
+import 'package:flutter/material.dart';
+
 class Category {
-  const Category({ 
-    required this.cat_text, 
+  const Category({
+    required this.title,
+    required this.subtitle,
     required this.imagePath,
     required this.id,
+    required this.icon,
   });
 
-  final String cat_text;
-  final String imagePath; 
+  final String title;
+  final String subtitle;
+  final String imagePath;
   final int id;
+  final IconData icon;
 }
 
-const CategoriesList = [
+const categoriesList = [
   Category(
-    cat_text: 'Pomoc dla treningów', 
-    imagePath: 'assets/images/trening_help.jpg', 
-    id: 0
+    title: 'Exercise Guide',
+    subtitle: 'Learn technique and muscle groups',
+    imagePath: 'assets/images/trening_help.jpg',
+    id: 0,
+    icon: Icons.fitness_center,
   ),
   Category(
-    cat_text: 'Treningi', 
-    imagePath: 'assets/images/photo.jpg', 
-    id: 1
+    title: 'Workout Log',
+    subtitle: 'Save training reports with photos',
+    imagePath: 'assets/images/photo.jpg',
+    id: 1,
+    icon: Icons.add_a_photo,
   ),
   Category(
-    cat_text: 'Meals', 
-    imagePath: 'assets/images/food.jpg', 
-    id: 2
+    title: 'Meals',
+    subtitle: 'Browse recipes by category',
+    imagePath: 'assets/images/food.jpg',
+    id: 2,
+    icon: Icons.restaurant,
   ),
   Category(
-    cat_text: 'Notatki', 
-    imagePath: 'assets/images/notepad.jpg', 
-    id: 3
+    title: 'Notes',
+    subtitle: 'Keep simple tasks and reminders',
+    imagePath: 'assets/images/notepad.jpg',
+    id: 3,
+    icon: Icons.notes,
   ),
 ];

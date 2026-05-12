@@ -3,22 +3,14 @@ class Task {
   String title;
   String description;
 
-  Task({
-    this.id,
-    required this.title,
-    required this.description,
-  });
+  Task({this.id, required this.title, required this.description});
 
-  // Преобразование в Map (для БД)
+  // Converts the task to a database map.
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'description': description,
-    };
+    return {'id': id, 'title': title, 'description': description};
   }
 
-  // Создание объекта из Map (из БД)
+  // Creates a task from a database map.
   factory Task.fromMap(Map<String, dynamic> map) {
     return Task(
       id: map['id'],

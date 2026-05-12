@@ -10,15 +10,16 @@ class TrainingCategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Фильтруем категории: если parentId null — берем главные зоны, иначе — мышцы этой зоны
     final filteredCategories = dummyTrainingCategories
         .where((cat) => cat.parentId == parentId)
         .toList();
 
     return Scaffold(
-      appBar: AppBar(title: Text(parentId == null ? 'Зоны тела' : 'Выберите мышцу')),
+      appBar: AppBar(
+        title: Text(parentId == null ? 'Exercise Guide' : 'Choose a Muscle'),
+      ),
       body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.fromLTRB(12, 8, 12, 24),
         itemCount: filteredCategories.length,
         itemBuilder: (ctx, index) {
           final category = filteredCategories[index];
@@ -27,15 +28,19 @@ class TrainingCategoriesScreen extends StatelessWidget {
             imagePath: category.imagePath,
             onSelect: () {
               if (parentId == null) {
-                // Идем глубже к выбору мышц
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (ctx) => TrainingCategoriesScreen(parentId: category.id),
-                ));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) =>
+                        TrainingCategoriesScreen(parentId: category.id),
+                  ),
+                );
               } else {
-                // Идем к списку упражнений
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (ctx) => ExercisesListScreen(muscleId: category.id),
-                ));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) =>
+                        ExercisesListScreen(muscleId: category.id),
+                  ),
+                );
               }
             },
           );

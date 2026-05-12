@@ -15,10 +15,10 @@ class TrainingCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.hardEdge,
-      elevation: 4,
+      elevation: 0,
       child: InkWell(
         onTap: onSelect,
         child: Stack(
@@ -28,12 +28,24 @@ class TrainingCategoryCard extends StatelessWidget {
               height: 180,
               width: double.infinity,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  height: 180,
+                  width: double.infinity,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: Icon(
+                    Icons.fitness_center,
+                    size: 42,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                );
+              },
             ),
             Positioned.fill(
               child: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.black87, Colors.transparent],
+                    colors: [Color(0xCC000000), Color(0x11000000)],
                     begin: Alignment.bottomCenter,
                     end: Alignment.center,
                   ),
@@ -43,13 +55,13 @@ class TrainingCategoryCard extends StatelessWidget {
             Positioned(
               bottom: 20,
               left: 20,
+              right: 20,
               child: Text(
                 title,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.2,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
             ),

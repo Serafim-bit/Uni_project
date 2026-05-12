@@ -1,11 +1,11 @@
 {
-    "name": "uni_project",
-    "short_name": "uni_project",
+    "name": "Fit Diary",
+    "short_name": "Fit Diary",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#F7F9F5",
+    "theme_color": "#1F7A5C",
+    "description": "A personal fitness diary for workouts, exercises, meals, and notes.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

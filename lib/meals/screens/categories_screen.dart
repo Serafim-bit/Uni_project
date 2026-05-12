@@ -34,16 +34,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     final filteredMeals = allMeals
         .where((meal) => meal.categories.contains(category.id))
         .toList();
-    
-    if (!mounted) return;
-    
+
+    if (!context.mounted) return;
+
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (ctx) => MealsScreen(
-          title: category.title,
-          meals: filteredMeals,
-        ),
+        builder: (ctx) =>
+            MealsScreen(title: category.title, meals: filteredMeals),
       ),
     );
   }
@@ -51,18 +49,16 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pick your category'),
-      ),
+      appBar: AppBar(title: const Text('Meal Categories')),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : GridView(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 3 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
               ),
               children: [
                 for (final category in _availableCategories)
@@ -71,7 +67,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     onSelectCategory: () {
                       _selectCategory(context, category);
                     },
-                  )
+                  ),
               ],
             ),
     );
