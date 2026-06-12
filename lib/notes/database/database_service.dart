@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:uni_project/notes/model/task.dart';
@@ -12,6 +13,12 @@ class DatabaseService {
     if (_database != null) return _database!;
     _database = await _initDB();
     return _database!;
+  }
+
+  @visibleForTesting
+  Future<void> closeForTesting() async {
+    await _database?.close();
+    _database = null;
   }
 
   Future<Database> _initDB() async {
@@ -56,10 +63,6 @@ class DatabaseService {
 
   Future<int> deleteTask(int id) async {
     final db = await database;
-    return await db.delete(
-      'tasks',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    return await db.delete('tasks', where: 'id = ?', whereArgs: [id]);
   }
 }

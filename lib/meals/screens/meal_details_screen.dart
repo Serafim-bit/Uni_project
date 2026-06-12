@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_project/meals/models/meal.dart';
+import 'package:uni_project/meals/widgets/meal_image.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({super.key, required this.meal});
@@ -14,23 +15,12 @@ class MealDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              meal.imageUrl,
+            MealImage(
+              imagePath: meal.imageUrl,
               height: 240,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  height: 240,
-                  width: double.infinity,
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: Icon(
-                    Icons.restaurant,
-                    size: 44,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  ),
-                );
-              },
+              iconSize: 44,
+              cacheWidth: 1100,
+              cacheHeight: 700,
             ),
             Padding(
               padding: const EdgeInsets.all(20),

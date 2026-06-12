@@ -50,16 +50,24 @@ class _NotesScreenState extends State<NotesScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
-                      Icons.notes,
-                      size: 48,
-                      color: Theme.of(context).colorScheme.primary,
+                    Container(
+                      width: 72,
+                      height: 72,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Icon(
+                        Icons.notes,
+                        size: 34,
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 16),
                     Text(
                       'No notes yet',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -69,6 +77,12 @@ class _NotesScreenState extends State<NotesScreen> {
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
+                    ),
+                    const SizedBox(height: 18),
+                    FilledButton.icon(
+                      onPressed: () => _openTaskForm(),
+                      icon: const Icon(Icons.add),
+                      label: const Text('Add Note'),
                     ),
                   ],
                 ),
@@ -89,11 +103,30 @@ class _NotesScreenState extends State<NotesScreen> {
                   child: ListTile(
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16,
-                      vertical: 6,
+                      vertical: 8,
                     ),
-                    title: Text(task.title),
+                    leading: Container(
+                      width: 42,
+                      height: 42,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        Icons.edit_note,
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                    ),
+                    title: Text(
+                      task.title.isEmpty ? 'Untitled note' : task.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontWeight: FontWeight.w800),
+                    ),
                     subtitle: Text(
-                      task.description,
+                      task.description.isEmpty
+                          ? 'No description'
+                          : task.description,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

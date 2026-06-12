@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:uni_project/trainings/model/training_report.dart';
@@ -17,25 +18,72 @@ class TrainingDatabaseService {
     return _database!;
   }
 
+  @visibleForTesting
+  Future<void> closeForTesting() async {
+    await _database?.close();
+    _database = null;
+  }
+
   Future<Database> _initDB() async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'training_reports.db');
 
-    return await openDatabase(
+    return openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
-        await db.execute('''
-          CREATE TABLE training_reports(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            date TEXT NOT NULL,
-            imagePath TEXT NOT NULL,
-            duration TEXT NOT NULL,
-            exercises TEXT NOT NULL
-          )
-        ''');
+        await _createReportsTable(db);
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await _migrateToVersion2(db);
+        }
       },
     );
+  }
+
+  Future<void> _createReportsTable(Database db) async {
+    await db.execute('''
+      CREATE TABLE training_reports(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        date TEXT NOT NULL,
+        imagePath TEXT NOT NULL DEFAULT '',
+        duration TEXT NOT NULL DEFAULT '',
+        durationMinutes INTEGER NOT NULL DEFAULT 0,
+        focus TEXT NOT NULL DEFAULT '',
+        exercises TEXT NOT NULL
+      )
+    ''');
+  }
+
+  Future<void> _migrateToVersion2(Database db) async {
+    await db.execute(
+      "ALTER TABLE training_reports ADD COLUMN durationMinutes INTEGER NOT NULL DEFAULT 0",
+    );
+    await db.execute(
+      "ALTER TABLE training_reports ADD COLUMN focus TEXT NOT NULL DEFAULT ''",
+    );
+
+    final oldRows = await db.query(
+      'training_reports',
+      columns: ['id', 'duration', 'exercises'],
+    );
+
+    for (final row in oldRows) {
+      final id = row['id'] as int;
+      final duration = row['duration']?.toString() ?? '';
+      final exercises = row['exercises']?.toString() ?? '';
+
+      await db.update(
+        'training_reports',
+        {
+          'durationMinutes': _parseDurationMinutes(duration),
+          'focus': _deriveFocus(exercises),
+        },
+        where: 'id = ?',
+        whereArgs: [id],
+      );
+    }
   }
 
   Future<List<TrainingReport>> getReports() async {
@@ -46,7 +94,19 @@ class TrainingDatabaseService {
 
   Future<int> insertReport(TrainingReport report) async {
     final db = await database;
-    return await db.insert('training_reports', report.toMap());
+    return db.insert('training_reports', report.toMap());
+  }
+
+  Future<int> updateReport(TrainingReport report) async {
+    if (report.id == null) return 0;
+
+    final db = await database;
+    return db.update(
+      'training_reports',
+      report.toMap(),
+      where: 'id = ?',
+      whereArgs: [report.id],
+    );
   }
 
   Future<String> saveReportImage(File imageFile) async {
@@ -67,6 +127,15 @@ class TrainingDatabaseService {
     return savedImage.path;
   }
 
+  Future<void> deleteReportImage(String? imagePath) async {
+    if (imagePath == null || imagePath.trim().isEmpty) return;
+
+    final imageFile = File(imagePath);
+    if (await imageFile.exists()) {
+      await imageFile.delete();
+    }
+  }
+
   Future<int> deleteReport(int id) async {
     final db = await database;
     final maps = await db.query(
@@ -84,14 +153,24 @@ class TrainingDatabaseService {
     );
 
     if (deletedRows > 0 && maps.isNotEmpty) {
-      final imagePath = maps.first['imagePath'] as String;
-      final imageFile = File(imagePath);
-
-      if (await imageFile.exists()) {
-        await imageFile.delete();
-      }
+      await deleteReportImage(maps.first['imagePath'] as String?);
     }
 
     return deletedRows;
+  }
+
+  int _parseDurationMinutes(String value) {
+    final match = RegExp(r'\d+').firstMatch(value);
+    if (match == null) return 0;
+    return int.tryParse(match.group(0)!) ?? 0;
+  }
+
+  String _deriveFocus(String exercises) {
+    final trimmed = exercises.trim();
+    if (trimmed.isEmpty) return '';
+
+    final firstLine = trimmed.split('\n').first.trim();
+    final firstPart = firstLine.split(',').first.trim();
+    return firstPart.length <= 32 ? firstPart : firstPart.substring(0, 32);
   }
 }

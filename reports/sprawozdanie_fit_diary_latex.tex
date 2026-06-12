@@ -1,0 +1,655 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{iftex}
+
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[polish]{babel}
+\else
+  \usepackage{fontspec}
+  \usepackage{polyglossia}
+  \setdefaultlanguage{polish}
+  \setmainfont{TeX Gyre Termes}
+\fi
+
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Sprawozdanie z projektu Fit Diary},
+  pdfauthor={Autor projektu}
+}
+
+\setlength{\parindent}{1.2cm}
+\setlength{\parskip}{0.25em}
+\setlist[itemize]{topsep=0.25em,itemsep=0.15em,leftmargin=1.2cm}
+\setlist[enumerate]{topsep=0.25em,itemsep=0.15em,leftmargin=1.2cm}
+\renewcommand{\arraystretch}{1.25}
+
+\graphicspath{{../assets/branding/}{assets/branding/}{../assets/images/}{assets/images/}}
+
+% Uzupełnij te dane przed oddaniem, jeżeli chcesz mieć pełne imię i nazwisko.
+\newcommand{\AutorProjektu}{Sidubayeu Serafim 341854}
+\newcommand{\KierunekGrupa}{Informatyka Stosowana, grupa 1}
+\newcommand{\Prowadzacy}{dr inż. Jarosław Wilk}
+\newcommand{\DataRaportu}{12 czerwca 2026}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1.2cm}
+
+    {\Large Sprawozdanie z projektu\par}
+    \vspace{0.4cm}
+    {\Huge\bfseries Fit Diary\par}
+    \vspace{0.4cm}
+    {\large Aplikacja do prowadzenia dziennika treningów, posiłków, przepisów i notatek\par}
+
+    \vspace{1.0cm}
+    \IfFileExists{../assets/branding/fit_diary_icon.png}{
+        \includegraphics[width=3.2cm]{../assets/branding/fit_diary_icon.png}
+    }{
+        \IfFileExists{assets/branding/fit_diary_icon.png}{
+            \includegraphics[width=3.2cm]{assets/branding/fit_diary_icon.png}
+        }{}
+    }
+
+    \vspace{1.1cm}
+    {\large Autor: \AutorProjektu\par}
+    \vspace{0.25cm}
+    {\large Kierunek / grupa: \KierunekGrupa\par}
+    \vspace{0.25cm}
+    {\large Prowadzący: \Prowadzacy\par}
+    \vspace{0.25cm}
+    {\large \DataRaportu\par}
+
+    \vfill
+
+    \begin{flushleft}
+    \textbf{Repozytorium zdalne:} \texttt{https://github.com/Serafim-bit/Uni\_project}\\
+    \textbf{Technologie:} Flutter, Dart, Material 3, SQLite, JSON assets\\
+    \textbf{Postać oddania:} raport PDF, plik \LaTeX, paczka ZIP z plikami źródłowymi\\
+    \textbf{Tryby działania:} aplikacja mobilna Android, projekt Flutter wieloplatformowy, lokalna baza danych
+    \end{flushleft}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Cel i idea projektu}
+
+\subsection{Cel projektu}
+
+Celem projektu było przygotowanie działającej aplikacji mobilnej, która pomaga użytkownikowi prowadzić prosty dziennik aktywności fizycznej. Projekt nie miał być tylko statycznym układem ekranów, ale aplikacją, którą można uruchomić na telefonie, zapisać w niej dane i wrócić do nich później.
+
+Aplikacja otrzymała nazwę \textbf{Fit Diary}. Jej zadaniem jest połączenie kilku codziennych funkcji fitness w jednym miejscu:
+
+\begin{itemize}
+    \item zapisywania treningów;
+    \item przeglądania techniki ćwiczeń;
+    \item prowadzenia dziennika posiłków;
+    \item korzystania z katalogu przepisów;
+    \item tworzenia prostych notatek.
+\end{itemize}
+
+Najważniejszym założeniem było stworzenie aplikacji praktycznej. Użytkownik nie powinien konfigurować konta, logowania ani połączenia z serwerem. Projekt działa lokalnie, a dane użytkownika są zapisywane w bazach SQLite na urządzeniu.
+
+\subsection{Problem użytkownika}
+
+Osoba trenująca często zapisuje informacje w wielu miejscach. Trening może być zapisany w notatniku, posiłek w innej aplikacji, technika ćwiczeń w wyszukiwarce, a krótkie przypomnienia na osobnej liście zadań. Po kilku dniach dane są rozproszone i trudno ocenić, co naprawdę zostało wykonane.
+
+Fit Diary rozwiązuje ten problem przez jeden prosty ekran startowy i kilka modułów tematycznych. Aplikacja nie próbuje zastąpić trenera personalnego ani profesjonalnego systemu dietetycznego. Jej główną wartością jest szybki zapis i szybki powrót do własnych informacji.
+
+\subsection{Idea działania}
+
+Aplikacja działa według zasady offline-first. Oznacza to, że podstawowe funkcje nie wymagają backendu ani internetu. Przepisy, ćwiczenia, zdjęcia i animacje znajdują się w zasobach aplikacji, a dane użytkownika są zapisywane lokalnie.
+
+Główny przepływ jest prosty:
+
+\begin{enumerate}
+    \item Użytkownik otwiera ekran główny Fit Diary.
+    \item Wybiera jeden z obszarów: Workout Log, Exercise Guide, Nutrition albo Notes.
+    \item Wprowadza dane w formularzu lub przegląda lokalny katalog.
+    \item Aplikacja zapisuje dane w SQLite albo odczytuje dane z plików JSON.
+    \item Po powrocie ekran pokazuje aktualny stan, na przykład ostatni trening albo nowe wpisy.
+\end{enumerate}
+
+\subsection{Najważniejsze moduły}
+
+Projekt składa się z pięciu głównych części.
+
+\begin{itemize}
+    \item \textbf{Home dashboard} -- ekran startowy z datą, kartą ostatniego treningu i szybkimi akcjami.
+    \item \textbf{Workout Log} -- dziennik treningów z edycją, filtrowaniem, sortowaniem, statystykami i opcjonalnym zdjęciem.
+    \item \textbf{Nutrition} -- dziennik posiłków oraz katalog przepisów.
+    \item \textbf{Exercise Guide} -- przewodnik po ćwiczeniach z lokalnymi GIF-ami i instrukcją techniki.
+    \item \textbf{Notes} -- prosty moduł notatek zapisywanych lokalnie.
+\end{itemize}
+
+\subsection{Przebieg wykonania projektu}
+
+Projekt rozwijał się etapami. Na początku aplikacja była prostszym projektem Flutter, w którym najważniejsze były podstawowe ekrany i przechodzenie między nimi. Następnie projekt został rozbudowany o realne funkcje użytkowe.
+
+Pierwszym ważnym krokiem było uporządkowanie ekranu startowego. Zostały przygotowane karty szybkich akcji oraz karta ostatniego treningu. Dzięki temu ekran główny zaczął pełnić funkcję dashboardu, a nie tylko menu.
+
+Kolejnym etapem było rozwinięcie Workout Log. Ten moduł stał się najważniejszą częścią produktu. Dodano możliwość zapisywania treningu z datą, fokusem, czasem trwania, listą ćwiczeń i zdjęciem. Następnie dodano edycję istniejących wpisów, filtrowanie, sortowanie oraz statystyki tygodniowe.
+
+Później rozbudowano Nutrition. Początkowo aplikacja zawierała prosty katalog posiłków, ale później dodano dziennik posiłków, wyszukiwanie przepisów, filtry, ulubione przepisy i możliwość dodania przepisu bezpośrednio do Meal Log.
+
+Następnym etapem była praca z zasobami. Zdjęcia posiłków i GIF-y ćwiczeń zostały zapisane lokalnie, aby aplikacja nie zależała od internetu. Uzupełniono też brakujące media oraz dodano informacje o źródłach w pliku \texttt{assets/ATTRIBUTIONS.md}.
+
+Ostatnie prace dotyczyły jakości i wyglądu. Ujednolicono język interfejsu, poprawiono motyw Material 3, zoptymalizowano cięższe GIF-y oraz dodano własne logo aplikacji. Projekt został również uruchomiony na fizycznym telefonie.
+
+\subsection{Kontrola wymagań}
+
+Wymagania projektowe zostały spełnione w następujący sposób:
+
+\begin{itemize}
+    \item cel projektu jest opisany w rozdziale \textit{Cel i idea projektu};
+    \item idea działania aplikacji jest opisana w rozdziale \textit{Idea działania};
+    \item technologie i biblioteki są opisane w rozdziale \textit{Biblioteki i technologie};
+    \item wyniki testów są opisane w rozdziale \textit{Wyniki};
+    \item mocne strony projektu są opisane w rozdziale \textit{Co się udało};
+    \item ograniczenia są opisane w rozdziale \textit{Co się nie udało albo pozostało ograniczeniem};
+    \item paczka ZIP z plikami źródłowymi jest przygotowana osobno od raportu PDF.
+\end{itemize}
+
+\section{Architektura projektu}
+
+\subsection{Główne części systemu}
+
+Projekt jest aplikacją Flutter z lokalną persistencją danych. Nie ma osobnego backendu. Zamiast tego aplikacja korzysta z lokalnych baz SQLite i plików JSON.
+
+Główne części systemu to:
+
+\begin{itemize}
+    \item \textbf{Flutter UI} -- ekrany, karty, formularze i nawigacja;
+    \item \textbf{Modele danych} -- klasy Dart opisujące treningi, posiłki, notatki, przepisy i ćwiczenia;
+    \item \textbf{Serwisy danych} -- klasy odpowiedzialne za SQLite oraz wczytywanie JSON;
+    \item \textbf{Assets} -- lokalne zdjęcia, GIF-y, ikona aplikacji i pliki danych;
+    \item \textbf{Testy} -- testy modeli, baz danych, katalogów i przepływów widgetowych.
+\end{itemize}
+
+\subsection{Najważniejsze katalogi}
+
+\begin{longtable}{p{0.28\textwidth}p{0.62\textwidth}}
+\toprule
+\textbf{Katalog} & \textbf{Opis} \\
+\midrule
+\texttt{lib/start} & Ekran główny, karty szybkich akcji i modele kategorii startowych. \\
+\texttt{lib/trainings} & Workout Log: model treningu, baza danych i ekran dziennika. \\
+\texttt{lib/train\_help} & Przewodnik ćwiczeń: kategorie, modele, usługa ładowania ćwiczeń i ekrany szczegółów. \\
+\texttt{lib/meals} & Nutrition: przepisy, dziennik posiłków, modele, widgety i baza danych. \\
+\texttt{lib/notes} & Prosty moduł notatek z lokalnym zapisem SQLite. \\
+\texttt{assets/data} & Pliki JSON z kategoriami, przepisami i ćwiczeniami. \\
+\texttt{assets/images} & Zdjęcia startowe, zdjęcia posiłków i media treningowe. \\
+\texttt{test} & Testy jednostkowe, bazodanowe i widgetowe. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Najważniejsze pliki}
+
+Najważniejsze pliki projektu są następujące:
+
+\begin{itemize}
+    \item \texttt{lib/main.dart} -- punkt wejścia aplikacji, konfiguracja \texttt{MaterialApp};
+    \item \texttt{lib/app\_theme.dart} -- wspólny motyw Material 3;
+    \item \texttt{lib/start/start\_screen.dart} -- ekran główny aplikacji;
+    \item \texttt{lib/trainings/training\_log\_screen.dart} -- interfejs dziennika treningów;
+    \item \texttt{lib/trainings/database/training\_database\_service.dart} -- SQLite dla treningów;
+    \item \texttt{lib/meals/screens/nutrition\_screen.dart} -- Meal Log i Recipes;
+    \item \texttt{lib/meals/database/meal\_log\_database\_service.dart} -- SQLite dla posiłków i ulubionych przepisów;
+    \item \texttt{lib/train\_help/services/exercise\_service.dart} -- ładowanie ćwiczeń z JSON;
+    \item \texttt{lib/notes/database/database\_service.dart} -- SQLite dla notatek;
+    \item \texttt{assets/data/meals.json} -- katalog 30 przepisów;
+    \item \texttt{assets/data/exercises.json} -- katalog 20 ćwiczeń;
+    \item \texttt{assets/ATTRIBUTIONS.md} -- źródła mediów i licencje.
+\end{itemize}
+
+\subsection{Przepływ danych}
+
+Dane użytkownika i dane katalogowe są obsługiwane oddzielnie.
+
+Dane użytkownika:
+
+\begin{itemize}
+    \item treningi są zapisywane w \texttt{training\_reports.db};
+    \item posiłki i ulubione przepisy są zapisywane w \texttt{meal\_log.db};
+    \item notatki są zapisywane w \texttt{tasks.db}.
+\end{itemize}
+
+Dane katalogowe:
+
+\begin{itemize}
+    \item przepisy są wczytywane z \texttt{assets/data/meals.json};
+    \item kategorie przepisów są wczytywane z \texttt{assets/data/categories.json};
+    \item ćwiczenia są wczytywane z \texttt{assets/data/exercises.json};
+    \item zdjęcia i animacje są wczytywane z folderu \texttt{assets/images}.
+\end{itemize}
+
+Przepływ dla formularzy wygląda następująco:
+
+\begin{center}
+\texttt{ekran -> formularz -> model danych -> serwis SQLite -> odświeżenie UI}
+\end{center}
+
+\section{Biblioteki i technologie}
+
+\subsection{Flutter i Dart}
+
+Flutter jest głównym frameworkiem projektu. Odpowiada za tworzenie interfejsu, nawigację, formularze, listy, karty, obsługę obrazów oraz działanie aplikacji na telefonie.
+
+Dart jest językiem, w którym napisano całą logikę aplikacji. Modele takie jak \texttt{TrainingReport}, \texttt{MealEntry}, \texttt{Meal}, \texttt{Task} i \texttt{Exercise} są zwykłymi klasami Dart.
+
+\subsection{Material 3}
+
+Projekt używa Material 3. Wspólny motyw znajduje się w pliku \texttt{lib/app\_theme.dart}. Motyw ustawia:
+
+\begin{itemize}
+    \item zielony kolor przewodni \texttt{\#1F7A5C};
+    \item jasne tło aplikacji \texttt{\#F7F9F5};
+    \item wygląd kart, przycisków i pól formularzy;
+    \item brak standardowego debug banner;
+    \item spójne zaokrąglenia i typografię.
+\end{itemize}
+
+\subsection{SQLite i sqflite}
+
+Do lokalnego zapisu danych użyto biblioteki \texttt{sqflite}. Projekt ma trzy niezależne bazy:
+
+\begin{itemize}
+    \item \texttt{tasks.db};
+    \item \texttt{meal\_log.db};
+    \item \texttt{training\_reports.db}.
+\end{itemize}
+
+Taki podział jest prosty i czytelny. Każdy większy moduł ma własny serwis bazy danych, co ułatwia testowanie i późniejsze zmiany.
+
+\subsection{Pozostałe zależności}
+
+W projekcie użyto także:
+
+\begin{itemize}
+    \item \texttt{path} -- budowanie ścieżek do baz danych i plików;
+    \item \texttt{transparent\_image} -- łagodne ładowanie obrazów;
+    \item \texttt{image\_picker} -- wybór zdjęć treningowych;
+    \item \texttt{intl} -- formatowanie dat;
+    \item \texttt{flutter\_test} -- testy Flutter;
+    \item \texttt{sqflite\_common\_ffi} -- testowanie SQLite poza telefonem.
+\end{itemize}
+
+\section{Workout Log}
+
+\subsection{Cel modułu}
+
+Workout Log jest głównym modułem aplikacji. To on najbardziej odróżnia Fit Diary od zwykłego katalogu ćwiczeń. Użytkownik może prowadzić własną historię aktywności i wracać do wcześniejszych wpisów.
+
+\subsection{Dane treningu}
+
+Model \texttt{TrainingReport} przechowuje:
+
+\begin{itemize}
+    \item identyfikator wpisu;
+    \item datę treningu;
+    \item opcjonalną ścieżkę do zdjęcia;
+    \item czas trwania w minutach;
+    \item fokus treningu;
+    \item listę albo opis ćwiczeń.
+\end{itemize}
+
+Ważną poprawką było rozdzielenie czasu trwania i fokusu na osobne pola. Starsze podejście, w którym część danych była zapisana jako tekst, było mniej wygodne do filtrowania i statystyk.
+
+\subsection{Funkcje użytkownika}
+
+Moduł pozwala:
+
+\begin{itemize}
+    \item dodać trening;
+    \item zapisać trening bez zdjęcia;
+    \item dodać zdjęcie przez picker;
+    \item edytować istniejący trening;
+    \item usunąć trening;
+    \item sortować wpisy;
+    \item filtrować historię;
+    \item zobaczyć podstawowe statystyki.
+\end{itemize}
+
+\subsection{Baza danych treningów}
+
+Treningi są przechowywane w bazie \texttt{training\_reports.db}. Główna tabela to \texttt{training\_reports}.
+
+Najważniejsze kolumny:
+
+\begin{itemize}
+    \item \texttt{id};
+    \item \texttt{date};
+    \item \texttt{imagePath};
+    \item \texttt{duration};
+    \item \texttt{durationMinutes};
+    \item \texttt{focus};
+    \item \texttt{exercises}.
+\end{itemize}
+
+Baza ma wersję 2. W migracji dodano kolumny \texttt{durationMinutes} i \texttt{focus}. Dzięki temu starsze wpisy mogą zostać odczytane i dopasowane do nowszego modelu.
+
+\section{Nutrition i Recipes}
+
+\subsection{Cel modułu}
+
+Nutrition jest drugim najważniejszym modułem aplikacji. Łączy prosty dziennik posiłków z katalogiem przepisów. Dzięki temu użytkownik nie tylko zapisuje, co zjadł, ale może też przeglądać gotowe propozycje i dodać przepis do Meal Log.
+
+\subsection{Meal Log}
+
+Wpis posiłku jest reprezentowany przez klasę \texttt{MealEntry}. Zawiera:
+
+\begin{itemize}
+    \item datę;
+    \item typ wpisu;
+    \item tytuł;
+    \item opcjonalne kalorie;
+    \item opcjonalną ilość białka;
+    \item notatki.
+\end{itemize}
+
+Pola kalorii i białka są opcjonalne, ponieważ użytkownik nie zawsze zna dokładne wartości. Dzięki temu aplikacja jest mniej wymagająca i bardziej praktyczna.
+
+\subsection{Recipes}
+
+Katalog przepisów zawiera 30 pozycji. Każdy przepis ma:
+
+\begin{itemize}
+    \item identyfikator;
+    \item kategorie;
+    \item tytuł;
+    \item lokalne zdjęcie;
+    \item składniki;
+    \item kroki przygotowania;
+    \item czas przygotowania;
+    \item poziom trudności;
+    \item poziom kosztu;
+    \item flagi dietetyczne.
+\end{itemize}
+
+Użytkownik może wyszukiwać przepisy, filtrować je po kategorii, czasie przygotowania i trudności, oznaczać jako ulubione oraz dodawać przepis do Meal Log.
+
+\subsection{Optymalizacja widoku przepisów}
+
+Po rozbudowie katalogu przepisów lista stała się cięższa. Dlatego ekran Nutrition został przebudowany tak, aby sekcja Recipes korzystała z \texttt{CustomScrollView} i \texttt{SliverList.builder}. Dzięki temu aplikacja nie buduje wszystkich kart przepisów od razu, tylko tworzy je w miarę przewijania.
+
+Dodatkowo widget \texttt{MealImage} ogranicza rozmiar dekodowania obrazów przez \texttt{cacheWidth} i \texttt{cacheHeight}. To zmniejsza obciążenie pamięci i poprawia płynność na telefonie.
+
+\section{Exercise Guide}
+
+\subsection{Cel modułu}
+
+Exercise Guide pełni funkcję edukacyjną. Użytkownik może sprawdzić, jak wykonać ćwiczenie, bez wychodzenia z aplikacji. Moduł jest szczególnie przydatny dla osób początkujących.
+
+\subsection{Kategorie treningowe}
+
+Główne kategorie to:
+
+\begin{itemize}
+    \item Upper Body;
+    \item Core;
+    \item Lower Body.
+\end{itemize}
+
+Po wejściu głębiej użytkownik widzi grupy mięśniowe:
+
+\begin{itemize}
+    \item Arms;
+    \item Back;
+    \item Abs;
+    \item Legs.
+\end{itemize}
+
+\subsection{Ćwiczenia i GIF-y}
+
+Plik \texttt{assets/data/exercises.json} zawiera 20 ćwiczeń. Każde ćwiczenie ma tytuł, opis, grupę mięśniową, ścieżkę do GIF-a oraz listę kroków technicznych.
+
+Lokalne GIF-y są ważną częścią projektu, ponieważ dzięki nim przewodnik działa bez internetu. Część GIF-ów została zoptymalizowana, ponieważ pierwotnie miały duży rozmiar i mogły powodować gorszą płynność aplikacji.
+
+\section{Notes}
+
+\subsection{Cel modułu}
+
+Notes to prosty moduł do zapisywania krótkich informacji. Nie jest głównym produktem aplikacji, ale dobrze uzupełnia pozostałe części. Użytkownik może zapisać przypomnienie, listę zakupów, uwagę po treningu albo krótką notatkę.
+
+\subsection{Implementacja}
+
+Notatka jest reprezentowana przez klasę \texttt{Task}. Zawiera:
+
+\begin{itemize}
+    \item \texttt{id};
+    \item \texttt{title};
+    \item \texttt{description}.
+\end{itemize}
+
+Dane są zapisywane w bazie \texttt{tasks.db}. Moduł obsługuje pełne operacje CRUD: dodawanie, odczyt, edycję i usuwanie.
+
+\section{Baza danych i dane lokalne}
+
+\subsection{Schemat baz danych}
+
+\begin{longtable}{p{0.22\textwidth}p{0.22\textwidth}p{0.46\textwidth}}
+\toprule
+\textbf{Baza} & \textbf{Tabela} & \textbf{Przeznaczenie} \\
+\midrule
+\texttt{tasks.db} & \texttt{tasks} & Notatki użytkownika. \\
+\texttt{meal\_log.db} & \texttt{meal\_entries} & Dziennik posiłków. \\
+\texttt{meal\_log.db} & \texttt{favorite\_recipes} & Ulubione przepisy. \\
+\texttt{training\_reports.db} & \texttt{training\_reports} & Historia treningów i zdjęcia treningowe. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Dane katalogowe}
+
+\begin{longtable}{p{0.38\textwidth}p{0.18\textwidth}p{0.34\textwidth}}
+\toprule
+\textbf{Plik} & \textbf{Liczba rekordów} & \textbf{Rola} \\
+\midrule
+\texttt{assets/data/categories.json} & 10 & Kategorie przepisów. \\
+\texttt{assets/data/meals.json} & 30 & Katalog przepisów. \\
+\texttt{assets/data/exercises.json} & 20 & Katalog ćwiczeń. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Zasoby multimedialne}
+
+Projekt zawiera:
+
+\begin{itemize}
+    \item 30 lokalnych zdjęć posiłków;
+    \item 21 lokalnych GIF-ów treningowych;
+    \item zdjęcia kategorii treningowych;
+    \item własną ikonę aplikacji;
+    \item plik \texttt{assets/ATTRIBUTIONS.md} z informacjami o źródłach mediów.
+\end{itemize}
+
+\section{Interfejs użytkownika}
+
+\subsection{Ekran główny}
+
+Ekran główny został uproszczony tak, aby nie przeciążał użytkownika. Zamiast długiej strony z powtarzającymi się sekcjami pokazuje:
+
+\begin{itemize}
+    \item nazwę aplikacji;
+    \item aktualną datę;
+    \item krótkie hasło opisujące aplikację;
+    \item kartę ostatniego treningu;
+    \item cztery szybkie akcje.
+\end{itemize}
+
+Usunięcie dolnej sekcji Explore training było dobrą decyzją, ponieważ te same funkcje są już dostępne w szybkich akcjach. Ekran jest dzięki temu czystszy i bardziej produktowy.
+
+\subsection{Spójność wizualna}
+
+Aplikacja ma spójny styl. W różnych modułach powtarzają się podobne karty, kolory, zaokrąglenia i przyciski. Dzięki temu użytkownik nie ma wrażenia, że każdy ekran pochodzi z innego projektu.
+
+\subsection{Ikona aplikacji}
+
+Standardowa ikona Fluttera została zastąpiona własnym logo Fit Diary. Ikona przedstawia notatnik, hantlę, znak potwierdzenia i liść. Dzięki temu aplikacja wygląda bardziej jak samodzielny produkt.
+
+\section{Testowanie i wyniki}
+
+\subsection{Testy automatyczne}
+
+Projekt ma zestaw testów automatycznych. Obejmują one modele, bazy danych, dane katalogowe i przepływy widgetowe.
+
+Końcowy stan testów:
+
+\begin{itemize}
+    \item \texttt{flutter analyze}: \texttt{No issues found};
+    \item \texttt{flutter test --reporter expanded --no-pub}: 24/24 testy zaliczone.
+\end{itemize}
+
+\subsection{Zakres testów}
+
+Testy sprawdzają między innymi:
+
+\begin{itemize}
+    \item tworzenie, edycję i usuwanie notatek;
+    \item CRUD dla Meal Log;
+    \item ulubione przepisy i migrację bazy posiłków;
+    \item CRUD dla Workout Log;
+    \item migrację starszych danych treningowych;
+    \item poprawność danych JSON;
+    \item istnienie lokalnych zdjęć i GIF-ów;
+    \item przejście przez Exercise Guide;
+    \item wyszukiwanie i filtrowanie przepisów;
+    \item dodanie przepisu do Meal Log;
+    \item ekran startowy aplikacji.
+\end{itemize}
+
+\subsection{Wyniki funkcjonalne}
+
+Udało się przygotować:
+
+\begin{itemize}
+    \item działającą aplikację Flutter;
+    \item lokalne bazy SQLite;
+    \item ekran startowy z szybkim dostępem do modułów;
+    \item rozbudowany Workout Log;
+    \item moduł Nutrition z Recipes;
+    \item przewodnik ćwiczeń z GIF-ami;
+    \item prosty moduł Notes;
+    \item własne logo aplikacji;
+    \item paczkę ZIP z plikami źródłowymi;
+    \item raport w PDF oraz źródło raportu w \LaTeX.
+\end{itemize}
+
+\section{Najważniejsze artefakty}
+
+Najważniejsze artefakty projektu:
+
+\begin{itemize}
+    \item raport PDF: \texttt{reports/sprawozdanie\_fit\_diary\_pl.pdf};
+    \item raport \LaTeX: \texttt{reports/sprawozdanie\_fit\_diary\_latex.tex};
+    \item ZIP z plikami źródłowymi: \texttt{reports/Fit\_Diary\_pliki\_zrodlowe.zip};
+    \item główny kod aplikacji: \texttt{lib/};
+    \item dane aplikacji: \texttt{assets/data/};
+    \item testy: \texttt{test/}.
+\end{itemize}
+
+Paczka ZIP została przygotowana bez folderów tymczasowych i wyników kompilacji. Nie zawiera \texttt{build}, \texttt{.git}, \texttt{.dart\_tool}, \texttt{reports}, plików PDF ani APK.
+
+\section{Co się udało}
+
+Najważniejsze rzeczy, które udało się zrobić:
+
+\begin{itemize}
+    \item projekt został przekształcony w działający prototyp produktu;
+    \item aplikacja uruchamia się na fizycznym telefonie;
+    \item dane treningów, posiłków i notatek zapisują się lokalnie;
+    \item Workout Log ma edycję, filtry, sortowanie i statystyki;
+    \item Nutrition ma wyszukiwanie, filtry, ulubione przepisy i Meal Log;
+    \item Exercise Guide ma lokalne GIF-y i instrukcje techniki;
+    \item ekran główny jest czysty i nie jest przeładowany;
+    \item interfejs jest spójny i oparty na Material 3;
+    \item aplikacja ma własną ikonę;
+    \item testy automatyczne przechodzą poprawnie.
+\end{itemize}
+
+\section{Co się nie udało albo pozostało ograniczeniem}
+
+Projekt jest gotowym prototypem, ale nie jest jeszcze pełnym produktem sklepowym. Ograniczenia:
+
+\begin{itemize}
+    \item nie ma kont użytkowników ani synchronizacji między urządzeniami;
+    \item nie ma backendu i kopii zapasowej w chmurze;
+    \item nie ma eksportu danych treningowych i żywieniowych;
+    \item wykresy postępu są jeszcze podstawowe albo wymagają rozbudowy;
+    \item katalog ćwiczeń i przepisów jest statyczny;
+    \item aplikacja nie ma jeszcze pełnej lokalizacji wielojęzycznej;
+    \item przed publikacją w sklepie trzeba przygotować release build, podpisywanie, package id i politykę prywatności.
+\end{itemize}
+
+Te ograniczenia nie oznaczają, że projekt jest niedokończony. Są naturalne dla etapu prototypu. Najważniejsze funkcje działają i można je zaprezentować.
+
+\section{Plan dalszego rozwoju}
+
+Najlepszy kierunek rozwoju to doprowadzenie aplikacji do wersji MVP. Priorytety:
+
+\begin{enumerate}
+    \item Dodać eksport i backup danych lokalnych.
+    \item Rozbudować statystyki i wykresy treningowe.
+    \item Dodać szczegóły przepisu w bardziej rozbudowanym widoku.
+    \item Pozwolić użytkownikowi dodawać własne przepisy.
+    \item Uporządkować duże pliki ekranów na mniejsze widgety.
+    \item Przygotować pełną lokalizację PL/EN.
+    \item Przygotować release Android z poprawnym package id i podpisem.
+\end{enumerate}
+
+\section{Instrukcja uruchomienia}
+
+Po rozpakowaniu ZIP-a projekt można uruchomić standardowo:
+
+\begin{verbatim}
+flutter pub get
+flutter run
+\end{verbatim}
+
+Uruchomienie na konkretnym telefonie:
+
+\begin{verbatim}
+flutter devices
+flutter run -d 9f1145f4
+\end{verbatim}
+
+Tryb do sprawdzania wydajności:
+
+\begin{verbatim}
+flutter run --profile -d 9f1145f4
+\end{verbatim}
+
+Testy i analiza:
+
+\begin{verbatim}
+flutter analyze
+flutter test
+\end{verbatim}
+
+\section{Wnioski końcowe}
+
+Projekt Fit Diary zakończył się działającym prototypem aplikacji mobilnej. Największą wartością projektu jest to, że nie ogranicza się do jednego ekranu lub jednej funkcji. Aplikacja łączy kilka codziennych potrzeb użytkownika aktywnego fizycznie: zapis treningu, posiłki, przepisy, technikę ćwiczeń i notatki.
+
+Najmocniejszym modułem jest Workout Log, ponieważ pozwala użytkownikowi prowadzić realną historię treningów. Nutrition i Exercise Guide dobrze uzupełniają ten moduł, a Notes dodaje prostą funkcję organizacyjną.
+
+Projekt jest gotowy do demonstracji jako prototyp. Można go uruchomić na telefonie, sprawdzić przepływy użytkownika i pokazać lokalny zapis danych. Do wersji produkcyjnej brakuje jeszcze eksportu danych, lepszych wykresów, finalnej konfiguracji release i polityki prywatności, ale fundament aplikacji jest stabilny.
+
+Najważniejszy wniosek jest taki, że Fit Diary można dalej rozwijać jako prawdziwy produkt. Aplikacja ma jasną ideę, spójny wygląd, lokalną bazę danych, testy i praktyczny zakres funkcji.
+
+\end{document}

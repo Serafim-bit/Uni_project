@@ -32,8 +32,8 @@ const categoriesList = [
     icon: Icons.add_a_photo,
   ),
   Category(
-    title: 'Meals',
-    subtitle: 'Browse recipes by category',
+    title: 'Nutrition',
+    subtitle: 'Log meals and browse recipes',
     imagePath: 'assets/images/food.jpg',
     id: 2,
     icon: Icons.restaurant,

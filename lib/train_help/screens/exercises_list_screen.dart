@@ -32,26 +32,39 @@ class ExercisesListScreen extends StatelessWidget {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.fromLTRB(12, 8, 12, 24),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             itemCount: exercises.length,
             itemBuilder: (ctx, index) {
               final exercise = exercises[index];
               return Card(
                 elevation: 0,
-                margin: const EdgeInsets.symmetric(vertical: 6),
+                margin: const EdgeInsets.only(bottom: 12),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(14),
                 ),
                 child: ListTile(
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 8,
+                    vertical: 10,
                   ),
-                  leading: Icon(
-                    Icons.fitness_center,
-                    color: Theme.of(context).colorScheme.primary,
+                  leading: Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      Icons.fitness_center,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
                   ),
-                  title: Text(exercise.title),
+                  title: Text(
+                    exercise.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontWeight: FontWeight.w800),
+                  ),
                   subtitle: Text(
                     exercise.description,
                     maxLines: 1,

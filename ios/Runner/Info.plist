@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Fit Diary uses the camera to attach photos to workout logs.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fit Diary uses your photo library so you can attach existing workout photos.</string>
 </dict>
 </plist>

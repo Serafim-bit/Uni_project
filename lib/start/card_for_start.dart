@@ -20,7 +20,7 @@ class CardForStart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
@@ -39,25 +39,28 @@ class CardForStart extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 16,
-              right: 16,
-              bottom: 16,
+              left: 12,
+              top: 12,
+              child: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.18),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.24),
+                  ),
+                ),
+                child: Icon(icon, color: Colors.white, size: 21),
+              ),
+            ),
+            Positioned(
+              left: 12,
+              right: 12,
+              bottom: 12,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Container(
-                    width: 44,
-                    height: 44,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.18),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.24),
-                      ),
-                    ),
-                    child: Icon(icon, color: Colors.white),
-                  ),
-                  const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -65,9 +68,11 @@ class CardForStart extends StatelessWidget {
                       children: [
                         Text(
                           title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 21,
+                            fontSize: 17,
                             fontWeight: FontWeight.w800,
                           ),
                         ),

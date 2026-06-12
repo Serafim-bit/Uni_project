@@ -5,7 +5,7 @@
     "title": "Spaghetti with Tomato Sauce",
     "affordability": "affordable",
     "complexity": "simple",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg",
+    "imageUrl": "assets/images/meals/m1.jpg",
     "duration": 20,
     "ingredients": [
       "4 Tomatoes",
@@ -35,7 +35,7 @@
     "title": "Toast Hawaii",
     "affordability": "affordable",
     "complexity": "simple",
-    "imageUrl": "https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg",
+    "imageUrl": "assets/images/meals/m2.jpg",
     "duration": 10,
     "ingredients": [
       "1 Slice White Bread",
@@ -60,7 +60,7 @@
     "title": "Classic Hamburger",
     "affordability": "pricey",
     "complexity": "simple",
-    "imageUrl": "https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg",
+    "imageUrl": "assets/images/meals/m3.jpg",
     "duration": 45,
     "ingredients": [
       "300g Cattle Hack",
@@ -88,7 +88,7 @@
     "title": "Wiener Schnitzel",
     "affordability": "luxurious",
     "complexity": "challenging",
-    "imageUrl": "https://cdn.pixabay.com/photo/2018/03/31/19/29/schnitzel-3279045_1280.jpg",
+    "imageUrl": "assets/images/meals/m4.jpg",
     "duration": 60,
     "ingredients": [
       "8 Veal Cutlets",
@@ -120,7 +120,7 @@
     "title": "Salad with Smoked Salmon",
     "affordability": "luxurious",
     "complexity": "simple",
-    "imageUrl": "https://cdn.pixabay.com/photo/2016/10/25/13/29/smoked-salmon-salad-1768890_1280.jpg",
+    "imageUrl": "assets/images/meals/m5.jpg",
     "duration": 15,
     "ingredients": [
       "Arugula",
@@ -151,7 +151,7 @@
     "title": "Delicious Orange Mousse",
     "affordability": "affordable",
     "complexity": "hard",
-    "imageUrl": "https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg",
+    "imageUrl": "assets/images/meals/m6.jpg",
     "duration": 240,
     "ingredients": [
       "4 Sheets of Gelatine",
@@ -183,7 +183,7 @@
     "title": "Pancakes",
     "affordability": "affordable",
     "complexity": "simple",
-    "imageUrl": "https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg",
+    "imageUrl": "assets/images/meals/m7.jpg",
     "duration": 20,
     "ingredients": [
       "1 1/2 Cups all-purpose Flour",
@@ -211,7 +211,7 @@
     "title": "Creamy Indian Chicken Curry",
     "affordability": "pricey",
     "complexity": "challenging",
-    "imageUrl": "https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg",
+    "imageUrl": "assets/images/meals/m8.jpg",
     "duration": 35,
     "ingredients": [
       "4 Chicken Breasts",
@@ -241,7 +241,7 @@
     "title": "Chocolate Souffle",
     "affordability": "affordable",
     "complexity": "hard",
-    "imageUrl": "https://cdn.pixabay.com/photo/2014/08/07/21/07/souffle-412785_1280.jpg",
+    "imageUrl": "assets/images/meals/m9.jpg",
     "duration": 45,
     "ingredients": [
       "1 Teaspoon melted Butter",
@@ -287,7 +287,7 @@
     "title": "Asparagus Salad with Cherry Tomatoes",
     "affordability": "luxurious",
     "complexity": "simple",
-    "imageUrl": "https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg",
+    "imageUrl": "assets/images/meals/m10.jpg",
     "duration": 30,
     "ingredients": [
       "White and Green Asparagus",
@@ -309,5 +309,577 @@
     "isVegan": true,
     "isVegetarian": true,
     "isLactoseFree": true
+  },
+  {
+    "id": "m11",
+    "categories": ["c1", "c2"],
+    "title": "Olive Margherita Pizza",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m11.jpg",
+    "duration": 30,
+    "ingredients": [
+      "1 Pizza Dough",
+      "120g Tomato Sauce",
+      "150g Mozzarella",
+      "Black Olives",
+      "Fresh Basil",
+      "Olive Oil",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Preheat the oven to 230 C.",
+      "Spread tomato sauce over the dough, leaving a small border.",
+      "Add torn mozzarella and sliced olives.",
+      "Bake until the crust is crisp and the cheese is bubbling.",
+      "Finish with basil, olive oil, salt, and pepper."
+    ],
+    "isGlutenFree": false,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m12",
+    "categories": ["c1"],
+    "title": "Mushroom Risotto",
+    "affordability": "affordable",
+    "complexity": "challenging",
+    "imageUrl": "assets/images/meals/m12.jpg",
+    "duration": 40,
+    "ingredients": [
+      "250g Arborio Rice",
+      "250g Mushrooms",
+      "1 Onion",
+      "700ml Vegetable Stock",
+      "40g Parmesan",
+      "1 Tablespoon Butter",
+      "Olive Oil"
+    ],
+    "steps": [
+      "Cook the chopped onion in olive oil until soft.",
+      "Add sliced mushrooms and cook until browned.",
+      "Stir in the rice and toast it for 1 minute.",
+      "Add warm stock one ladle at a time, stirring often.",
+      "Finish with butter and parmesan when the rice is creamy."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m13",
+    "categories": ["c2", "c5", "c10"],
+    "title": "Caprese Salad",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m13.jpg",
+    "duration": 10,
+    "ingredients": [
+      "2 Tomatoes",
+      "125g Mozzarella",
+      "Fresh Basil",
+      "1 Tablespoon Olive Oil",
+      "Balsamic Vinegar",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Slice the tomatoes and mozzarella.",
+      "Layer them on a plate with basil leaves.",
+      "Drizzle with olive oil and balsamic vinegar.",
+      "Season with salt and pepper before serving."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m14",
+    "categories": ["c3", "c2"],
+    "title": "Turkey Burger",
+    "affordability": "pricey",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m14.jpg",
+    "duration": 35,
+    "ingredients": [
+      "300g Ground Turkey",
+      "2 Burger Buns",
+      "Lettuce",
+      "Tomato Slices",
+      "1 Small Onion",
+      "Mustard",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Season the turkey with salt and pepper and form 2 patties.",
+      "Cook the patties in a hot pan until done through.",
+      "Toast the buns for 1 minute.",
+      "Layer lettuce, tomato, onion, turkey, and mustard.",
+      "Serve while the burger is warm."
+    ],
+    "isGlutenFree": false,
+    "isVegan": false,
+    "isVegetarian": false,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m15",
+    "categories": ["c3", "c5"],
+    "title": "Black Bean Burger",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m15.jpg",
+    "duration": 30,
+    "ingredients": [
+      "1 Can Black Beans",
+      "1 Small Onion",
+      "1 Garlic Clove",
+      "2 Tablespoons Oats",
+      "Smoked Paprika",
+      "2 Burger Buns",
+      "Lettuce and Salsa"
+    ],
+    "steps": [
+      "Mash the beans with chopped onion, garlic, oats, and paprika.",
+      "Shape the mixture into 2 firm patties.",
+      "Cook the patties in a lightly oiled pan until crisp.",
+      "Toast the buns and add lettuce and salsa.",
+      "Build the burgers and serve."
+    ],
+    "isGlutenFree": false,
+    "isVegan": true,
+    "isVegetarian": true,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m16",
+    "categories": ["c4", "c2"],
+    "title": "German Fried Potatoes with Egg",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m16.jpg",
+    "duration": 30,
+    "ingredients": [
+      "500g Cooked Potatoes",
+      "2 Eggs",
+      "100g Ham or Turkey Slices",
+      "1 Onion",
+      "1 Tablespoon Oil",
+      "Parsley",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Slice the cooked potatoes into thick rounds.",
+      "Fry onion and ham in oil until lightly browned.",
+      "Add the potatoes and cook until crisp at the edges.",
+      "Fry the eggs in a separate pan.",
+      "Serve potatoes with eggs, parsley, salt, and pepper."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": false,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m17",
+    "categories": ["c4", "c5"],
+    "title": "Creamy Potato Soup",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m17.jpg",
+    "duration": 45,
+    "ingredients": [
+      "600g Potatoes",
+      "1 Leek",
+      "1 Carrot",
+      "700ml Vegetable Stock",
+      "100ml Cream",
+      "Nutmeg",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Peel and cube the potatoes and carrot.",
+      "Cook the leek in a pot until soft.",
+      "Add potatoes, carrot, and stock and simmer until tender.",
+      "Blend the soup until smooth.",
+      "Stir in cream and season with nutmeg, salt, and pepper."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m18",
+    "categories": ["c7", "c2"],
+    "title": "Greek Yogurt Berry Bowl",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m18.jpg",
+    "duration": 10,
+    "ingredients": [
+      "250g Greek Yogurt",
+      "Mixed Berries",
+      "1 Banana",
+      "1 Tablespoon Honey",
+      "Granola",
+      "Cinnamon"
+    ],
+    "steps": [
+      "Spoon the yogurt into a bowl.",
+      "Add berries, banana slices, and granola.",
+      "Drizzle with honey.",
+      "Finish with a pinch of cinnamon."
+    ],
+    "isGlutenFree": false,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m19",
+    "categories": ["c7", "c2"],
+    "title": "Avocado Toast with Egg",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m19.jpg",
+    "duration": 12,
+    "ingredients": [
+      "2 Slices Wholegrain Bread",
+      "1 Avocado",
+      "2 Eggs",
+      "Lemon Juice",
+      "Chili Flakes",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Toast the bread until crisp.",
+      "Mash avocado with lemon juice, salt, and pepper.",
+      "Cook the eggs to your liking.",
+      "Spread avocado on the toast and add eggs.",
+      "Sprinkle with chili flakes."
+    ],
+    "isGlutenFree": false,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m20",
+    "categories": ["c7", "c5"],
+    "title": "Spinach Omelette",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m20.jpg",
+    "duration": 15,
+    "ingredients": [
+      "3 Eggs",
+      "A Handful of Spinach",
+      "40g Feta",
+      "1 Spring Onion",
+      "1 Teaspoon Oil",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Whisk the eggs with salt and pepper.",
+      "Soften spinach and spring onion in a lightly oiled pan.",
+      "Pour in the eggs and cook over medium heat.",
+      "Add feta before folding the omelette.",
+      "Serve warm."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m21",
+    "categories": ["c8", "c5"],
+    "title": "Salmon Rice Bowl",
+    "affordability": "pricey",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m21.jpg",
+    "duration": 25,
+    "ingredients": [
+      "2 Salmon Fillets",
+      "250g Cooked Rice",
+      "Cucumber",
+      "Spinach",
+      "2 Tablespoons Tamari",
+      "1 Teaspoon Honey",
+      "Sesame Seeds"
+    ],
+    "steps": [
+      "Mix tamari and honey for a quick glaze.",
+      "Cook the salmon in a pan and brush it with the glaze.",
+      "Add cooked rice to bowls.",
+      "Top with cucumber, spinach, salmon, and sesame seeds.",
+      "Serve immediately."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": false,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m22",
+    "categories": ["c8", "c2", "c5"],
+    "title": "Tofu Vegetable Stir Fry",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m22.jpg",
+    "duration": 20,
+    "ingredients": [
+      "200g Firm Tofu",
+      "1 Bell Pepper",
+      "1 Zucchini",
+      "1 Carrot",
+      "2 Tablespoons Tamari",
+      "1 Teaspoon Sesame Oil",
+      "Cooked Rice"
+    ],
+    "steps": [
+      "Press and cube the tofu.",
+      "Stir fry tofu until golden, then remove it from the pan.",
+      "Cook the vegetables over high heat for a few minutes.",
+      "Return tofu to the pan and add tamari and sesame oil.",
+      "Serve with cooked rice."
+    ],
+    "isGlutenFree": true,
+    "isVegan": true,
+    "isVegetarian": true,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m23",
+    "categories": ["c8", "c2"],
+    "title": "Chicken Fried Rice",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m23.jpg",
+    "duration": 25,
+    "ingredients": [
+      "250g Cooked Rice",
+      "1 Chicken Breast",
+      "2 Eggs",
+      "Peas",
+      "Spring Onion",
+      "2 Tablespoons Soy Sauce",
+      "1 Teaspoon Oil"
+    ],
+    "steps": [
+      "Dice and cook the chicken until golden.",
+      "Push chicken aside and scramble the eggs in the pan.",
+      "Add rice, peas, spring onion, and soy sauce.",
+      "Stir fry until everything is hot.",
+      "Serve right away."
+    ],
+    "isGlutenFree": false,
+    "isVegan": false,
+    "isVegetarian": false,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m24",
+    "categories": ["c9", "c5", "c10"],
+    "title": "Ratatouille",
+    "affordability": "affordable",
+    "complexity": "challenging",
+    "imageUrl": "assets/images/meals/m24.jpg",
+    "duration": 50,
+    "ingredients": [
+      "1 Eggplant",
+      "1 Zucchini",
+      "2 Bell Peppers",
+      "3 Tomatoes",
+      "1 Onion",
+      "2 Garlic Cloves",
+      "Herbs de Provence"
+    ],
+    "steps": [
+      "Dice all vegetables into similar-sized pieces.",
+      "Cook onion and garlic until fragrant.",
+      "Add eggplant, zucchini, peppers, and tomatoes.",
+      "Simmer until the vegetables are tender.",
+      "Season with herbs, salt, and pepper."
+    ],
+    "isGlutenFree": true,
+    "isVegan": true,
+    "isVegetarian": true,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m25",
+    "categories": ["c9"],
+    "title": "French Onion Soup",
+    "affordability": "affordable",
+    "complexity": "challenging",
+    "imageUrl": "assets/images/meals/m25.jpg",
+    "duration": 70,
+    "ingredients": [
+      "4 Onions",
+      "1 Tablespoon Butter",
+      "800ml Beef or Vegetable Stock",
+      "1 Baguette Slice",
+      "60g Gruyere",
+      "Thyme",
+      "Salt and Pepper"
+    ],
+    "steps": [
+      "Slice onions thinly.",
+      "Cook them slowly in butter until deeply golden.",
+      "Add stock and thyme and simmer for 25 minutes.",
+      "Top with toasted bread and grated cheese.",
+      "Broil until the cheese melts."
+    ],
+    "isGlutenFree": false,
+    "isVegan": false,
+    "isVegetarian": false,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m26",
+    "categories": ["c9", "c5", "c10"],
+    "title": "Nicoise Salad",
+    "affordability": "pricey",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m26.jpg",
+    "duration": 25,
+    "ingredients": [
+      "Tuna Steak or Canned Tuna",
+      "Green Beans",
+      "2 Eggs",
+      "Cherry Tomatoes",
+      "Olives",
+      "Cooked Potatoes",
+      "Olive Oil and Lemon"
+    ],
+    "steps": [
+      "Boil the eggs and potatoes until cooked.",
+      "Blanch green beans until just tender.",
+      "Arrange vegetables, eggs, olives, and tuna on a plate.",
+      "Drizzle with olive oil and lemon juice.",
+      "Season with salt and pepper."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": false,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m27",
+    "categories": ["c6", "c5"],
+    "title": "Moroccan Bean Tagine",
+    "affordability": "affordable",
+    "complexity": "challenging",
+    "imageUrl": "assets/images/meals/m27.jpg",
+    "duration": 45,
+    "ingredients": [
+      "1 Can Chickpeas or Beans",
+      "1 Onion",
+      "2 Tomatoes",
+      "1 Carrot",
+      "Dried Apricots",
+      "Cumin and Cinnamon",
+      "Fresh Cilantro"
+    ],
+    "steps": [
+      "Cook onion and carrot until soft.",
+      "Add tomatoes, beans, apricots, cumin, and cinnamon.",
+      "Simmer until the sauce thickens.",
+      "Adjust seasoning with salt and pepper.",
+      "Finish with cilantro and serve with couscous or rice."
+    ],
+    "isGlutenFree": true,
+    "isVegan": true,
+    "isVegetarian": true,
+    "isLactoseFree": true
+  },
+  {
+    "id": "m28",
+    "categories": ["c6", "c10"],
+    "title": "Shrimp Tacos with Lime Slaw",
+    "affordability": "pricey",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m28.jpg",
+    "duration": 25,
+    "ingredients": [
+      "250g Shrimp",
+      "4 Corn Tortillas",
+      "Cabbage",
+      "Lime Juice",
+      "Greek Yogurt or Mayo",
+      "Cilantro",
+      "Chili Powder"
+    ],
+    "steps": [
+      "Season shrimp with chili powder, salt, and pepper.",
+      "Cook shrimp quickly in a hot pan.",
+      "Mix cabbage with lime juice, yogurt, and cilantro.",
+      "Warm the tortillas.",
+      "Fill tortillas with slaw and shrimp."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": false,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m29",
+    "categories": ["c10", "c5"],
+    "title": "Watermelon Feta Salad",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m29.jpg",
+    "duration": 15,
+    "ingredients": [
+      "500g Watermelon",
+      "100g Feta",
+      "Fresh Mint",
+      "Cucumber",
+      "Lime Juice",
+      "Olive Oil",
+      "Black Pepper"
+    ],
+    "steps": [
+      "Cube the watermelon and cucumber.",
+      "Crumble feta over the fruit.",
+      "Add chopped mint.",
+      "Drizzle with lime juice and olive oil.",
+      "Finish with black pepper."
+    ],
+    "isGlutenFree": true,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
+  },
+  {
+    "id": "m30",
+    "categories": ["c7", "c10", "c5"],
+    "title": "Berry Smoothie Bowl",
+    "affordability": "affordable",
+    "complexity": "simple",
+    "imageUrl": "assets/images/meals/m30.jpg",
+    "duration": 10,
+    "ingredients": [
+      "1 Frozen Banana",
+      "150g Mixed Berries",
+      "100ml Milk or Plant Milk",
+      "2 Tablespoons Yogurt",
+      "Granola",
+      "Chia Seeds"
+    ],
+    "steps": [
+      "Blend banana, berries, milk, and yogurt until thick.",
+      "Pour into a bowl.",
+      "Top with granola and chia seeds.",
+      "Serve immediately while cold."
+    ],
+    "isGlutenFree": false,
+    "isVegan": false,
+    "isVegetarian": true,
+    "isLactoseFree": false
   }
 ]

@@ -18,33 +18,44 @@ class TrainingCategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(parentId == null ? 'Exercise Guide' : 'Choose a Muscle'),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.fromLTRB(12, 8, 12, 24),
-        itemCount: filteredCategories.length,
-        itemBuilder: (ctx, index) {
-          final category = filteredCategories[index];
-          return TrainingCategoryCard(
-            title: category.title,
-            imagePath: category.imagePath,
-            onSelect: () {
-              if (parentId == null) {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (ctx) =>
-                        TrainingCategoriesScreen(parentId: category.id),
-                  ),
-                );
-              } else {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (ctx) =>
-                        ExercisesListScreen(muscleId: category.id),
-                  ),
-                );
-              }
-            },
-          );
-        },
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+        children: [
+          Text(
+            parentId == null
+                ? 'Choose a training area.'
+                : 'Pick a muscle group to see exercises.',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: 10),
+          for (final category in filteredCategories)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: TrainingCategoryCard(
+                title: category.title,
+                imagePath: category.imagePath,
+                onSelect: () {
+                  if (parentId == null) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) =>
+                            TrainingCategoriesScreen(parentId: category.id),
+                      ),
+                    );
+                  } else {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) =>
+                            ExercisesListScreen(muscleId: category.id),
+                      ),
+                    );
+                  }
+                },
+              ),
+            ),
+        ],
       ),
     );
   }

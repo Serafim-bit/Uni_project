@@ -68,16 +68,29 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: const InputDecoration(labelText: 'Title'),
+              textCapitalization: TextCapitalization.sentences,
+              decoration: const InputDecoration(
+                labelText: 'Title',
+                prefixIcon: Icon(Icons.title),
+              ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _descriptionController,
-              decoration: const InputDecoration(labelText: 'Note'),
+              textCapitalization: TextCapitalization.sentences,
+              decoration: const InputDecoration(
+                labelText: 'Note',
+                prefixIcon: Icon(Icons.notes),
+              ),
+              minLines: 5,
               maxLines: null,
             ),
             const SizedBox(height: 32),
-            ElevatedButton(onPressed: _saveTask, child: const Text('Save')),
+            ElevatedButton.icon(
+              onPressed: _saveTask,
+              icon: const Icon(Icons.check),
+              label: const Text('Save'),
+            ),
           ],
         ),
       ),
